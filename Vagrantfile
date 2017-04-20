@@ -32,7 +32,7 @@ Vagrant.configure(2) do |config|
     config.vm.network :forwarded_port, guest: i, host: i+10000, auto_correct: true
   end
 
-  config.vm.synced_folder ".", "/vagrant", type: "nfs", create: true
+  config.vm.synced_folder "~/code", "/vagrant/code", type: "nfs", create: true
 
   config.vm.hostname = "Ionic-Box"
   config.vm.provider :virtualbox do |vb|
@@ -41,5 +41,4 @@ Vagrant.configure(2) do |config|
     vb.customize ["modifyvm", :id, "--usb", "on"]
     vb.customize ["usbfilter", "add", "0", "--target", :id, "--name", "android", "--vendorid", "0x18d1"]
   end
-
 end
